@@ -3,21 +3,49 @@
 
 using namespace std;
 long long itc_len(string str){
-    int length = 0;
+    int len = 0;
     for (int i = 0; str[i] != '\0'; ++i) {
-        length++;
+        len++;
     }
-    return length;
+    return len;
 }
-string summa(string a, string b){
-string result;
-int c = a.size();
-int d = b.size();
-int dlina;
-if (d > c) {
-    result = b;
-    dlina = d - c;
-    for (int i = 0; i < dlina; i++) {
-        a = '0' + a;
+string summ(string st, string st1){
+string res;
+int z = st.size();
+int f = st1.size();
+int dlin;
+if (f > z) {
+    res = st1;
+    dlin = f - z;
+    for (int i = 0; i < dlin; i++) {
+        st = st + '0';
     }
+    cout << st << endl;
+}
+else if (f < z)
+{
+    res = st;
+    dlin = z - f;
+    for (int i = 0; i < dlin; i++)
+    {
+        st1 = st1 + '0';
+    }
+}
+else{
+    res = st;
+}
+int dlin1 = res.size();
+bool odin = false;
+
+for (int i = dlin1 - 1; i >= 0; i--) {
+    int summ = (st[i] - '0') + (st1[i] - '0') + odin;
+    res[i] = (summ % 10) + '0';
+    odin = summ / 10;
+}
+
+if (odin) {
+    res = '1' + res;
+}
+
+return res;
 }
